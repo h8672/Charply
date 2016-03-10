@@ -19,10 +19,9 @@ Most important functions? And maybe its logics?
 
 Used technologies?
  - Visual studio 2015 WPF Application.
- - 
+ - XNA Game studio?
+
 Planned schedule?
- - Requirements in 1 week
- - Mockup in 1 week
  - 
 
 Planned information usage from:
@@ -33,7 +32,7 @@ Mockup?
  - Maybe wpf application with display and no functions? Should save time...
 
 Used libraries?
-
+ - 
 
 ### 3. Implementation
 
