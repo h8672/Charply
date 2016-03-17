@@ -21,9 +21,6 @@ Used technologies?
  - Visual studio 2015 WPF Application.
  - XNA Game studio?
 
-Planned schedule?
- - 
-
 Planned information usage from:
  - Database?
  - Local content?
@@ -37,3 +34,45 @@ Used libraries?
 ### 3. Implementation
 
 ### 4. Return project
+
+Create readme.pdf that includes these...
+
+#### 1. Installing
+
+ - System requirements
+ - 
+ - Installing default directories
+ 
+#### 2. Program information
+
+ - List of requirements
+ - list of unfinished requirements
+ - list of overcoding or of chart requirements
+ - list of unprogrammable requirements and possible limitations
+
+#### 3. Screen captures of most important UI and short instructions for use if needed
+
+#### 4. Required program databases/logs
+
+ - Include creation scripts and testdata creation script
+ - ?
+
+#### 5. Known issues and bugs and development ideas
+
+#### 6. 
+
+ - Total time used and per author
+ - What did you learn?
+ - Biggest challenges?
+ - What would you study/learn more?
+ - more...
+
+#### 7.
+
+ - Suggestion for points?
+ - Distribution of points?
+
+### 5. Seminar
+
+
+### 6. Evalution
