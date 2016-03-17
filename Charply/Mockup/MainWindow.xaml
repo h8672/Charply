@@ -1,0 +1,24 @@
+﻿<Window x:Class="Mockup.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mockup"
+        mc:Ignorable="d"
+        Title="Mockup" Height="350" Width="525">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="200">
+                <Button >Test</Button>
+                <Button>Test</Button>
+                <Button>Test</Button>
+                <TextBox>Test</TextBox>
+            </StackPanel>
+            <StackPanel>
+                <DataGrid>
+                
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
