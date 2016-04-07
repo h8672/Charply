@@ -37,7 +37,7 @@
             </StackPanel>
         </TabItem>
         <TabItem Header="Else" Width="120">
-            
+
         </TabItem>
     </TabControl>
 </Window>
