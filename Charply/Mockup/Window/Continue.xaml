@@ -1,0 +1,28 @@
+﻿<Window x:Class="Charply.Continue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Charply"
+        mc:Ignorable="d"
+        Title="Continue" Height="300" Width="400">
+    <StackPanel Background="DarkGray">
+        <Grid Margin="10" Height="80" TextBlock.FontSize="16" Background="LightGray">
+            <!--Vasen-->
+            <Grid Width="240" HorizontalAlignment="Left">
+                <TextBlock x:Name="txtSave" Text="Tallennuksen nimi"/>
+                <TextBlock x:Name="txtComment" Text="Kommentti" VerticalAlignment="Bottom" Height="50"/>
+            </Grid>
+            <!--Oikea-->
+            <Grid Width="120" HorizontalAlignment="Right" TextBlock.TextAlignment="Right">
+                <TextBlock x:Name="txtDate" Text="pvm"/>
+                <TextBlock x:Name="txtRime" Text="Aika" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnLoad" Content="Load" Margin="5" Padding="5" Click="btnLoad_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Margin="5" Padding="5" Click="btnCancel_Click"/>
+        </StackPanel>
+        <Grid x:Name="gridSaved" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="110" Width="360" Background="AliceBlue"/>
+    </StackPanel>
+</Window>

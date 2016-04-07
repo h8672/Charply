@@ -22,20 +22,14 @@ namespace Charply
         public Client()
         {
             InitializeComponent();
-
-        }
-
-        static public void Test()
-        {
-            MessageBox.Show("Test!");
         }
 
         #region Buttons
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            /*Application.Current.MainWindow = new GameMenu();
+            Application.Current.MainWindow = new GameMenu();
             Application.Current.MainWindow.Show();
-            Close(); //Without client window stays open*/
+            Close(); //Without client window stays open
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

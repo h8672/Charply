@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Charply
+namespace Charply.Class
 {
     class BLGame
     {
         Map map;
         List<Team> teams;
-
     }
 }

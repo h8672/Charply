@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Charply
+namespace Charply.Class
 {
     class MapObject
     {
@@ -14,18 +14,18 @@ namespace Charply
 
         public string Name
         {
-            get{ return name; }
-            set{ name = value; }
+            get { return name; }
+            set { name = value; }
         }
         public double MoveCost
         {
-            get{ return movementcost; }
+            get { return movementcost; }
             set { movementcost = value; }
         }
         public string Background
         {
-            get{ return background; }
-            set{ background = value; }
+            get { return background; }
+            set { background = value; }
         }
     }
 }

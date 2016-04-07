@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace Charply
+namespace Charply.Class
 {
     class Soldier
     {
@@ -17,8 +16,8 @@ namespace Charply
         #region
         public double MoveSpeed
         {
-            get{ return movespeed; }
-            set{ movespeed = value; }
+            get { return movespeed; }
+            set { movespeed = value; }
         }
         public int X
         {
