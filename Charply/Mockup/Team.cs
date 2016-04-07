@@ -9,8 +9,7 @@ namespace Charply
     class Team
     {
         private string teamname;
-        List<Building> buildings;
-        List<Soldier> soldiers;
+        private int teamid;
 
         public string TeamName
         {
@@ -21,6 +20,17 @@ namespace Charply
             set
             {
                 teamname = value;
+            }
+        }
+        public int TeamID
+        {
+            get
+            {
+                return teamid;
+            }
+            set
+            {
+                teamid = value;
             }
         }
     }

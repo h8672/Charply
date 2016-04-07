@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Charply
 {
-    class Game
+    class BLGame
     {
         Map map;
         List<Team> teams;
+
     }
 }
