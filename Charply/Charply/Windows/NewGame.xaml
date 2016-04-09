@@ -1,0 +1,61 @@
+﻿<Window x:Class="Charply.Windows.NewGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Charply.Windows"
+        mc:Ignorable="d"
+        Title="NewGame" Height="300" Width="400"
+        
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel TextBlock.FontSize="18" Background="DarkGray">
+        <Border BorderBrush="Black" BorderThickness="4 4 4 0">
+            <Grid>
+                <TextBlock Text="Map size" Padding="8" Margin="5"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Border BorderBrush="Gray" BorderThickness="4 4 0 4" Padding="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="x "/>
+                            <TextBox x:Name="txtMapWidth" Text="200" Width="80"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="Gray" BorderThickness="4" Padding="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="y "/>
+                            <TextBox x:Name="txtMapHeight" Text="200" Width="80"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="4 4 4 0">
+            <StackPanel Margin="8" ToolTip="Minerals over the map take % of whole area">
+                <TextBlock x:Name="txtMinerals" TextAlignment="Center" Text="Mineral condensation 20%"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>20 %</TextBlock>
+                    <Slider x:Name="slidMinerals" IsSnapToTickEnabled="True" TickPlacement="TopLeft"
+                            Value="20" Minimum="20" Maximum="50"
+                            Width="260" Margin="10 0" ValueChanged="slidMinerals_ValueChanged"/>
+                    <TextBlock>50 %</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="4 4 4 0">
+            <Grid Margin="8">
+                <TextBlock TextWrapping="Wrap">Difficulty</TextBlock>
+                <ComboBox x:Name="cbDifficulty" Width="80" HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="4">
+            <Grid Margin="8">
+                <TextBlock ToolTip="Maximum soldier amount for each player" Text="Soldiers"/>
+                <TextBox x:Name="txtSoldiers" Text="255" Width="80" HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button x:Name="btnStart" Padding="5" Click="btnStart_Click" Content="Start"/>
+            <Button x:Name="btnCancel" Padding="5" Margin="10 0 0 0" Click="btnCancel_Click" Content="Cancel"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

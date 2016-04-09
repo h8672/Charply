@@ -63,7 +63,7 @@ namespace Charply
         }
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hello from About button!\nCheck https://github.com/h8672/Charply/wiki/Mockup");
+            MessageBox.Show("Hello from About button!\nCheck https://github.com/h8672/Charply/wiki/Charply");
             //Application.Current.MainWindow = new NewGame();
             //Application.Current.MainWindow.Show();
             //Close();

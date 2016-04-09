@@ -1,17 +1,20 @@
-﻿<Window x:Class="Charply.GameMenu" ResizeMode="NoResize"
+﻿<Window x:Class="Charply.Windows.Mainscreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Charply"
+        xmlns:local="clr-namespace:Charply.Windows"
         mc:Ignorable="d"
-        Title="Charply - Mainmenu" Height="240" Width="400">
+        Title="Mainscreen" Height="240" Width="400"
+        
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
     <Grid Background="DarkKhaki">
         <StackPanel>
             <TextBlock FontSize="32" TextAlignment="Center">Charply</TextBlock>
             <Button x:Name="btnNew" Margin="100 24 100 0" Click="btnNew_Click" Content="New game"/>
             <Button x:Name="btnContinue" Margin="100 0" Click="btnContinue_Click" Content="Continue"/>
-            <Button x:Name="btnSettings" Margin="100 0" Click="btnSettings_Click" Content="Settings"/>
+            <Button x:Name="btnSettings" Margin="100 0" Click="btnSettings_Click" Content="Options"/>
             <Button x:Name="btnAbout" Margin="100 0" Click="btnAbout_Click" Content="About"/>
             <Button x:Name="btnExit" Margin="100 10" Click="btnExit_Click" Content="Exit game"/>
         </StackPanel>

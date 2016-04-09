@@ -1,0 +1,46 @@
+﻿<Window x:Class="Charply.Windows.Options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Charply.Windows"
+        mc:Ignorable="d"
+        Title="Options" Height="300" Width="400"
+        
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <TabControl HorizontalAlignment="Center" FontSize="32" Margin="0" Padding="0">
+        <TabItem Header="Game" Width="120">
+            <StackPanel TextBlock.FontSize="18">
+                <!--Row-->
+                <Grid>
+                    <TextBlock Text="Game speed"/>
+                    <TextBlock HorizontalAlignment="Right" Width="200" Text="test"/>
+                </Grid>
+                <!--Row-->
+                <Grid>
+                    <TextBlock VerticalAlignment="Center" Text="Map slot size"/>
+                    <StackPanel HorizontalAlignment="Right" TextBlock.TextAlignment="Center">
+                        <TextBlock x:Name="txtGameSizeSquare" Text="1" Margin="0 0 20 0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock>1</TextBlock>
+                            <Slider x:Name="slidGameSizeSquare" IsSnapToTickEnabled="True" TickPlacement="TopLeft"
+                                    Value="1" Minimum="1" Maximum="5"
+                                    Width="180" Margin="10 0" ValueChanged="slidGameSizeSquare_ValueChanged"/>
+                            <TextBlock>5</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Sound" Width="120">
+            <StackPanel>
+                <TextBlock>test</TextBlock>
+                <TextBlock>test2</TextBlock>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Else" Width="120">
+
+        </TabItem>
+    </TabControl>
+</Window>
