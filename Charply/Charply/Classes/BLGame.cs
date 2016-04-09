@@ -13,6 +13,8 @@ namespace Charply.Classes
         #region Attributes
         private Map map;
         private List<Team> teams;
+        private List<Player> players;
+        private List<Movetype> movetypes;
         #endregion
 
         #region Properties

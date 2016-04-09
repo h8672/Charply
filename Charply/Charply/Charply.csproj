@@ -59,6 +59,7 @@
     <Compile Include="Classes\Building.cs" />
     <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\MapObject.cs" />
+    <Compile Include="Classes\Movetype.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Position.cs" />
     <Compile Include="Classes\Soldier.cs" />

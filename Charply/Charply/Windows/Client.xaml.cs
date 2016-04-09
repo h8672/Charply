@@ -29,6 +29,7 @@ namespace Charply.Windows
         private void InitThis()
         {
             txtVersion.Text = BLGame.Version();
+            //txtBoardText.Background = Brushes.AliceBlue;
             txtBoardTitle.Text = "Alpha " + BLGame.Version();
             txtBoardText.Text = "Game is currently in alpha version. New things are added continuously.\n"
                 + " - Client window half way done, no version downloads or checks yet\n"

@@ -38,7 +38,7 @@ namespace Charply.Classes
             //Calculate range of position and target
             if (pos.getRange(target) <= movespeed)
             {
-                if (movespeed >= slot.MoveCost)
+                if (movespeed >= slot.SpeedPenalty)
                 {
                     pos = target;
                     return true;

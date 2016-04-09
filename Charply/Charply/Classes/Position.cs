@@ -12,7 +12,8 @@ namespace Charply.Classes
         private int x;
         private int y;
         #endregion
-        #region
+
+        #region Properties
         public int X
         {
             get { return x; }
@@ -24,6 +25,15 @@ namespace Charply.Classes
             set { y = value; }
         }
         #endregion
+
+        #region Constructors
+        public Position(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+        #endregion
+
         #region Functions
         public double getRange(Position target)
         {

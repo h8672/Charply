@@ -9,8 +9,11 @@ namespace Charply.Classes
     class Building
     {
         #region Attributes
-        private string name;
         private Position pos;
+        private double life;
+        private string name;
+        private char[] direction;
+        private string info;
         #endregion
 
         #region
