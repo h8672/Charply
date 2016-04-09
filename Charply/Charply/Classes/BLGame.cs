@@ -15,6 +15,7 @@ namespace Charply.Classes
         private List<Team> teams;
         private List<Player> players;
         private List<Movetype> movetypes;
+        private Settings settings;
         #endregion
 
         #region Properties

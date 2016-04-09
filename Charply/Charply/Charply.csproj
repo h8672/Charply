@@ -62,6 +62,8 @@
     <Compile Include="Classes\Movetype.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Position.cs" />
+    <Compile Include="Classes\Resource.cs" />
+    <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Soldier.cs" />
     <Compile Include="Classes\Team.cs" />
     <Compile Include="Windows\Client.xaml.cs">
