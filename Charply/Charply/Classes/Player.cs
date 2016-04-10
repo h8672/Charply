@@ -14,7 +14,7 @@ namespace Charply.Classes
         private List<Soldier> soldiers;
         #endregion
 
-        #region
+        #region Properties
         public Team Team
         {
             get { return team; }

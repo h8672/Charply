@@ -14,7 +14,7 @@ namespace Charply.Classes
         Position pos;
         #endregion
 
-        #region
+        #region Properties
         public double MoveSpeed
         {
             get { return movespeed; }
@@ -30,6 +30,10 @@ namespace Charply.Classes
             get { return pos.Y; }
             set { pos.Y = value; }
         }
+        #endregion
+
+        #region Constructors
+
         #endregion
 
         #region Functions

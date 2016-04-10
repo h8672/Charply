@@ -11,10 +11,10 @@ namespace Charply.Classes
     public class BLGame
     {
         #region Attributes
-        private Map map;
         private List<Team> teams;
         private List<Player> players;
         private List<Movetype> movetypes;
+        private Map map;
         private Settings settings;
         #endregion
 
@@ -22,6 +22,12 @@ namespace Charply.Classes
         #endregion
 
         #region Functions
+        public void addPlayer(Team team)
+        {
+            Player player = new Player();
+            player.Team = team;
+            players.Add(player);
+        }
         #endregion
 
         #region StaticFunctions

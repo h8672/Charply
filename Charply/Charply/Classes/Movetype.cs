@@ -9,16 +9,18 @@ namespace Charply.Classes
 {
     class Movetype
     {
+        #region Attributes
         private string name;
         private string direction;
         private double speedpenalty;
+        #endregion
 
+        #region Properties
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-
         public string Direction{
             get { return direction; }
             set
@@ -33,11 +35,17 @@ namespace Charply.Classes
                 }
             }
         }
+        #endregion
 
+        #region Constructors
         public Movetype(string name, string direction, double speedpenalty)
         {
             this.Name = name;
             this.Direction = direction;
         }
+        #endregion
+
+        #region Functions
+        #endregion
     }
 }

@@ -8,9 +8,12 @@ namespace Charply.Classes
 {
     class Team
     {
+        #region Attributes
         private string teamname;
         private int teamid;
+        #endregion
 
+        #region Properties
         public string TeamName
         {
             get
@@ -33,5 +36,10 @@ namespace Charply.Classes
                 teamid = value;
             }
         }
+        #endregion
+        #region Constructors
+        #endregion
+        #region Functions
+        #endregion
     }
 }

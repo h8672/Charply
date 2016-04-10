@@ -9,11 +9,22 @@ namespace Charply.Classes
     class Settings
     {
         #region Attributes
+        private int gamespeed;
+        private double mapsquaresize;
         private int soldiercount;
         private double mapresources;
         #endregion
 
         #region Properties
+        public int GameSpeed {
+            get{ return gamespeed; }
+            set { gamespeed = value; }
+        }
+        public double SquareSize
+        {
+            get { return mapsquaresize; }
+            set { mapsquaresize = value; }
+        }
         public int SoldierCount
         {
             get { return soldiercount; }
@@ -24,6 +35,14 @@ namespace Charply.Classes
             get { return mapresources; }
             set { mapresources = value; }
         }
+        #endregion
+
+        #region Constructors
+
+        #endregion
+
+        #region Functions
+
         #endregion
     }
 }

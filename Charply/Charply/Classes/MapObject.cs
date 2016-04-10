@@ -9,10 +9,13 @@ namespace Charply.Classes
 {
     class MapObject
     {
+        #region Attributes
         private Brush backgroundcolor;
         private string name;
         private double speedpenalty;
+        #endregion
 
+        #region Properties
         public string Name
         {
             get { return name; }
@@ -28,12 +31,19 @@ namespace Charply.Classes
             get { return backgroundcolor; }
             set { backgroundcolor = value; }
         }
+        #endregion
 
+        #region Constructors
         public MapObject(string name, double speedpenalty, Brush color)
         {
             this.Name = name;
             this.SpeedPenalty = speedpenalty;
             this.Background = color;
         }
+        #endregion
+
+        #region Functions
+
+        #endregion
     }
 }
