@@ -36,6 +36,11 @@ namespace Charply.Windows
             texts.Add(new LoadingText("before"));
             texts.Add(new LoadingText("game"));
             gridLoading.ItemsSource = texts;
+            this.Show();
+            System.Threading.Thread.Sleep(2000);
+            App.Current.MainWindow = new Game();
+            App.Current.MainWindow.Show();
+            Close();
         }
 
         public class LoadingText {

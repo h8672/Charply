@@ -26,8 +26,13 @@ namespace Charply.Windows
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
+            //To not close application, we need to temporarily copy old window address to Window class
+            Window window = App.Current.MainWindow;
+            //Make new window there
             App.Current.MainWindow = new Game();
             App.Current.MainWindow.Show();
+            //And close old window.
+            window.Close();
             Close();
         }
 

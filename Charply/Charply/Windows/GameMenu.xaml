@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Charply.Windows"
         mc:Ignorable="d"
-        Title="GameMenu" Height="300" Width="300"
+        Title="GameMenu" Height="210" Width="300"
         
         WindowStyle="None"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        
-    </Grid>
+    <StackPanel Background="Gray">
+        <Button Margin="60 40 60 2.5" Name="btnBack" Click="btnBack_Click">Back</Button>
+        <Button Margin="60 2.5" Name="btnSave" Click="btnSave_Click">Save</Button>
+        <Button Margin="60 2.5" Name="bntLoad" Click="bntLoad_Click">Load</Button>
+        <Button Margin="60 2.5" Name="btnToMenu" Click="btnToMenu_Click">Exit to menu</Button>
+        <Button Margin="60 2.5 60 40" Name="btnQuit" Click="btnQuit_Click">Quit game</Button>
+    </StackPanel>
 </Window>

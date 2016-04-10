@@ -23,5 +23,31 @@ namespace Charply.Windows
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void bntLoad_Click(object sender, RoutedEventArgs e)
+        {
+            //Open Continue screen, but dont close current.
+            Continue load = new Continue();
+        }
+
+        private void btnToMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnQuit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

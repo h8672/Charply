@@ -13,19 +13,19 @@
         <Grid Margin="10" Height="80" TextBlock.FontSize="16" Background="LightGray">
             <!--Vasen-->
             <Grid Width="240" HorizontalAlignment="Left">
-                <TextBlock x:Name="txtSave" Text="Tallennuksen nimi"/>
-                <TextBlock x:Name="txtComment" Text="Kommentti" VerticalAlignment="Bottom" Height="50"/>
+                <TextBlock x:Name="txtSave" Text="Save name"/>
+                <TextBlock x:Name="txtComment" Text="Comment" VerticalAlignment="Bottom" Height="50"/>
             </Grid>
             <!--Oikea-->
             <Grid Width="120" HorizontalAlignment="Right" TextBlock.TextAlignment="Right">
-                <TextBlock x:Name="txtDate" Text="pvm"/>
-                <TextBlock x:Name="txtRime" Text="Aika" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="txtDate" Text="Date"/>
+                <TextBlock x:Name="txtRime" Text="Time" VerticalAlignment="Bottom"/>
             </Grid>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnLoad" Content="Load" Margin="5" Padding="5" Click="btnLoad_Click"/>
             <Button x:Name="btnCancel" Content="Cancel" Margin="5" Padding="5" Click="btnCancel_Click"/>
         </StackPanel>
-        <Grid x:Name="gridSaved" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="110" Width="360" Background="AliceBlue"/>
+        <Grid x:Name="gridSaved" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="110" Width="360" Background="AliceBlue" DataContext="{Binding}"/>
     </StackPanel>
 </Window>

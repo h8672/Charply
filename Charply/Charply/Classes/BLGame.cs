@@ -22,11 +22,9 @@ namespace Charply.Classes
         #endregion
 
         #region Functions
-        public void addPlayer(Team team)
+        public void addPlayer()
         {
-            Player player = new Player();
-            player.Team = team;
-            players.Add(player);
+            players.Add(new Player());
         }
         #endregion
 

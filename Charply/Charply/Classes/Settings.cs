@@ -9,10 +9,14 @@ namespace Charply.Classes
     class Settings
     {
         #region Attributes
+        //From options
         private int gamespeed;
         private double mapsquaresize;
-        private int soldiercount;
+        //From new game
+        private Position mapsize;
         private double mapresources;
+        private int difficulty;
+        private int soldiercount;
         #endregion
 
         #region Properties

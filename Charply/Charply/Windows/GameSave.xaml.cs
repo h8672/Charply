@@ -15,32 +15,25 @@ using System.Windows.Shapes;
 namespace Charply.Windows
 {
     /// <summary>
-    /// Interaction logic for NewGame.xaml
+    /// Interaction logic for GameSave.xaml
     /// </summary>
-    public partial class NewGame : Window
+    public partial class GameSave : Window
     {
-        public NewGame()
+        public GameSave()
         {
             InitializeComponent();
         }
 
-        private void slidMinerals_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        #region Buttons
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            txtMinerals.Text = slidMinerals.Value.ToString();
+            //TODO
         }
-
-        private void btnStart_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.MainWindow = new LoadingScreen();
-            //App.Current.MainWindow.Show();
-            Close();
-        }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainWindow = new Mainscreen();
-            App.Current.MainWindow.Show();
             Close();
         }
+        #endregion
+
     }
 }
