@@ -24,6 +24,7 @@ namespace Charply.Windows
         {
             InitializeComponent();
             InitThis();
+            BLGame.init();
         }
 
         private void InitThis()

@@ -59,11 +59,14 @@
     <Compile Include="Classes\Building.cs" />
     <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\MapObject.cs" />
+    <Compile Include="Classes\Move.cs" />
     <Compile Include="Classes\Movetype.cs" />
     <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\PlayerObject.cs" />
     <Compile Include="Classes\Position.cs" />
     <Compile Include="Classes\Resource.cs" />
     <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Classes\Skill.cs" />
     <Compile Include="Classes\Soldier.cs" />
     <Compile Include="Classes\Team.cs" />
     <Compile Include="Windows\Client.xaml.cs">

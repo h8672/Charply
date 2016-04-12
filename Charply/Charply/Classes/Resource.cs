@@ -9,16 +9,27 @@ namespace Charply.Classes
     class Resource
     {
         #region Attributes
-        public string name;
-        public int amount;
+        private string name;
+        private int amount;
         #endregion
 
         #region Properties
-
+        public string Name
+        {
+            get { return name; }
+        }
+        public int Amount
+        {
+            get { return amount; }
+        }
         #endregion
 
         #region Constructors
-
+        public Resource(string name, int amount)
+        {
+            this.name = name;
+            this.amount = amount;
+        }
         #endregion
 
         #region Functions

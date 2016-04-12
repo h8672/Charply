@@ -7,11 +7,10 @@ using System.Windows;
 
 namespace Charply.Classes
 {
-    class Soldier
+    class Soldier : PlayerObject
     {
         #region Attributes
         private double movespeed;
-        Position pos;
         #endregion
 
         #region Properties
@@ -20,31 +19,28 @@ namespace Charply.Classes
             get { return movespeed; }
             set { movespeed = value; }
         }
-        public int X
-        {
-            get { return pos.X; }
-            set { pos.X = value; }
-        }
-        public int Y
-        {
-            get { return pos.Y; }
-            set { pos.Y = value; }
-        }
         #endregion
 
         #region Constructors
-
+        public Soldier(string name, double life, LinkedList<Skill> skilllist, double movespeed) : base(name, life, skilllist)
+        {
+            this.movespeed = movespeed;
+        }
+        public Soldier(Soldier po, Position position) : base(po, position) {
+            this.movespeed = po.movespeed;
+        }
         #endregion
 
         #region Functions
         public bool Move(Position target, MapObject slot)
         {
             //Calculate range of position and target
-            if (pos.getRange(target) <= movespeed)
+            if (Pos.getRange(target) <= movespeed)
             {
                 if (movespeed >= slot.SpeedPenalty)
                 {
-                    pos = target;
+                    Pos = target;
+                    movespeed -= slot.SpeedPenalty;
                     return true;
                 }
                 else { return false; }

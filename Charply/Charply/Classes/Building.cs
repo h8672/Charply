@@ -6,36 +6,28 @@ using System.Threading.Tasks;
 
 namespace Charply.Classes
 {
-    class Building
+    class Building : PlayerObject
     {
         #region Attributes
-        private Position pos;
-        private double life;
-        private string name;
-        private string direction;
-        private string info;
+        private int armor;
         #endregion
 
         #region Properties
-        public string Name
+        public int Armor
         {
-            get { return name; }
-            set { name = value; }
-        }
-        public int X
-        {
-            get { return pos.X; }
-            set { pos.X = value; }
-        }
-        public int Y
-        {
-            get { return pos.Y; }
-            set { pos.Y = value; }
+            get { return armor; }
         }
         #endregion
 
-        #region Functions
+        #region Constructors
+        public Building(string name, double life, LinkedList<Skill> skilllist, int armor) : base(name, life, skilllist)
+        {
+            this.armor = armor;
+        }
+        public Building(Building po, Position position) : base(po, position) { }
+        #endregion
 
+        #region Functions
         #endregion
     }
 }

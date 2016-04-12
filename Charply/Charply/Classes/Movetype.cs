@@ -35,6 +35,11 @@ namespace Charply.Classes
                 }
             }
         }
+        public double SpeedPenalty
+        {
+            get { return speedpenalty; }
+            set { speedpenalty = value; }
+        }
         #endregion
 
         #region Constructors

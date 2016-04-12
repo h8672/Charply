@@ -28,6 +28,10 @@ namespace Charply.Windows
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //TODO
+            //txtSave;
+            //txtComment;
+            //txtdate;
+            //txttime;
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

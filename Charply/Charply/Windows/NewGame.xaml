@@ -17,13 +17,13 @@
                     <Border BorderBrush="Gray" BorderThickness="4 4 0 4" Padding="5">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="x "/>
-                            <TextBox x:Name="txtMapWidth" Text="200" Width="80"/>
+                            <TextBox x:Name="txtMapWidth" Text="200" Width="80" TextAlignment="Center"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="Gray" BorderThickness="4" Padding="5">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="y "/>
-                            <TextBox x:Name="txtMapHeight" Text="200" Width="80"/>
+                            <TextBox x:Name="txtMapHeight" Text="200" Width="80" TextAlignment="Center"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -31,13 +31,13 @@
         </Border>
         <Border BorderBrush="Black" BorderThickness="4 4 4 0">
             <StackPanel Margin="8" ToolTip="Minerals over the map take % of whole area">
-                <TextBlock x:Name="txtMinerals" TextAlignment="Center" Text="Mineral condensation 20%"/>
+                <TextBlock x:Name="txtMinerals" TextAlignment="Center" Text="Mineral dentisity 20%"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>20 %</TextBlock>
+                    <TextBlock>10 %</TextBlock>
                     <Slider x:Name="slidMinerals" IsSnapToTickEnabled="True" TickPlacement="TopLeft"
-                            Value="20" Minimum="20" Maximum="50"
+                            Value="10" Minimum="10" Maximum="30"
                             Width="260" Margin="10 0" ValueChanged="slidMinerals_ValueChanged"/>
-                    <TextBlock>50 %</TextBlock>
+                    <TextBlock>30 %</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -50,7 +50,7 @@
         <Border BorderBrush="Black" BorderThickness="4">
             <Grid Margin="8">
                 <TextBlock ToolTip="Maximum soldier amount for each player" Text="Soldiers"/>
-                <TextBox x:Name="txtSoldiers" Text="255" Width="80" HorizontalAlignment="Right"/>
+                <TextBox x:Name="txtSoldiers" Text="255" Width="80" HorizontalAlignment="Right" TextAlignment="Center"/>
             </Grid>
         </Border>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">

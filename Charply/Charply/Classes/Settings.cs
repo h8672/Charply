@@ -9,17 +9,19 @@ namespace Charply.Classes
     class Settings
     {
         #region Attributes
-        //From options
+        //Options
         private int gamespeed;
         private double mapsquaresize;
-        //From new game
+        //New game
         private Position mapsize;
         private double mapresources;
-        private int difficulty;
+        private string difficulty;
         private int soldiercount;
+        private bool grid;
         #endregion
 
         #region Properties
+        //Options
         public int GameSpeed {
             get{ return gamespeed; }
             set { gamespeed = value; }
@@ -28,6 +30,22 @@ namespace Charply.Classes
         {
             get { return mapsquaresize; }
             set { mapsquaresize = value; }
+        }
+        public bool Grid
+        {
+            get { return grid; }
+            set { grid = value; }
+        }
+        //New game
+        public Position MapSize
+        {
+            get { return mapsize; }
+            set { mapsize = value; }
+        }
+        public string Difficulty
+        {
+            get { return difficulty; }
+            set { difficulty = value; }
         }
         public int SoldierCount
         {
