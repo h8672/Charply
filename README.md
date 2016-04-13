@@ -1,6 +1,8 @@
 # Charply
 C# 2nd year course practical work
 
+Here a link to last words of this small project https://github.com/h8672/Charply/wiki/Documentation
+
 ## Progress:
 
 ### 1. Select topic
