@@ -34,11 +34,10 @@ namespace Charply.Classes
         #endregion
 
         #region Constructors
-        public MapObject(MapObject mo)
-        {
-            this.name = mo.Name;
-            this.backgroundcolor = mo.Background;
-            this.speedpenalty = mo.SpeedPenalty;
+        public MapObject(MapObject mo) {
+            this.name = mo.name;
+            this.backgroundcolor = mo.backgroundcolor;
+            this.speedpenalty = mo.speedpenalty;
         }
         public MapObject(string name, double speedpenalty, Brush color)
         {

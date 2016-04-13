@@ -167,12 +167,12 @@ namespace Charply.Windows
             }
 
             //Jos kuva ei saata pysyä kartalla...
-            if (view.X + maarax > Settings.MapSize.X)
+            if ((view.X + maarax) > Settings.MapSize.X)
             {
                 view.X = Settings.MapSize.X - maarax;
                 maarax = Settings.MapSize.X;
             }
-            else if (view.Y + maaray > Settings.MapSize.Y)
+            else if ((view.Y + maaray) > Settings.MapSize.Y)
             {
                 view.Y = Settings.MapSize.Y - maaray;
                 maaray = Settings.MapSize.Y;
@@ -344,7 +344,7 @@ namespace Charply.Windows
             //Its toggle zoom!
             if(temp == 0)
             {
-                double temp = Settings.SquareSize;
+                temp = Settings.SquareSize;
                 Settings.SquareSize = 0;
                 updateWindow();
             }
@@ -352,6 +352,7 @@ namespace Charply.Windows
             {
                 Settings.SquareSize = temp;
                 updateWindow();
+                temp = 0;
             }
         }
     }

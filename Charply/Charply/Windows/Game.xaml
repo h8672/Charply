@@ -31,7 +31,7 @@
                             <TextBlock Name="txtCoord" Text="Coordinate"/>
                             <TextBlock Name="txtDmg" Text="Damage" VerticalAlignment="Bottom"/>
                         </Grid>
-                        <Button Name="MapZoom" Margin=" 10" Padding="10" Background="PowderBlue" Click="MapZoom_Click">Map</Button>
+                        <Button Name="MapZoom" Margin=" 10" Padding="10" Background="PowderBlue" Click="MapZoom_Click" Content="Zoom"/>
                     </StackPanel>
 
                 </Grid>

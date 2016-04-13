@@ -41,6 +41,7 @@ namespace Charply.Classes
             this.size = size;
             mapobjects = new List<MapObject>();
             maplink = new LinkedList<MapObject>();
+            mapobjectbackup = new List<MapObject>();
         }
         #endregion
 
@@ -57,7 +58,8 @@ namespace Charply.Classes
             mapobjects.Add(new MapObject("Water", 10, Brushes.LightBlue));
             mapobjects.Add(new MapObject("Forest", 2, Brushes.Green));
             mapobjects.Add(new MapObject("Dirt", 1.2, Brushes.Brown));
-            mapobjectbackup = new List<MapObject>(mapobjects);
+            for (int i = 0; i < mapobjects.Count; i++)
+                mapobjectbackup.Add(new MapObject(mapobjects.ElementAt(i)));
         }
 
         public void fixColor(Position pos)
@@ -82,7 +84,7 @@ namespace Charply.Classes
                     {
                         if (mapobjects.Count > 0)
                         {
-                            maplink.AddLast(new MapObject(mapobjects.ElementAt(rnd.Next(mapobjects.Count - 1))));
+                            maplink.AddLast(mapobjects.ElementAt(rnd.Next(mapobjects.Count - 1)));
                         }
                         else {
                             MessageBox.Show("There's no MapObjects");
@@ -103,7 +105,7 @@ namespace Charply.Classes
         {
             int listpos;
             if (pos.Y > 0)
-                listpos = size.X * (pos.Y - 1) + pos.X;
+                listpos = size.X * (pos.Y) + pos.X;
             else listpos = pos.X;
             return maplink.ElementAt(listpos);
 
