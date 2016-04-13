@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Charply.Classes
 {
@@ -43,6 +44,20 @@ namespace Charply.Classes
         #endregion
 
         #region Functions
+        public void init()
+        {
+            addMapObjects();
+        }
+
+        private void addMapObjects()
+        {
+            mapobjects.Add(new MapObject("Ground", 1, Brushes.Gray));
+            mapobjects.Add(new MapObject("Grass", 1, Brushes.LightGreen));
+            mapobjects.Add(new MapObject("Water", 10, Brushes.LightBlue));
+            mapobjects.Add(new MapObject("Forest", 2, Brushes.Green));
+            mapobjects.Add(new MapObject("Dirt", 1.2, Brushes.Brown));
+        }
+
         public void createMap()
         {
             try

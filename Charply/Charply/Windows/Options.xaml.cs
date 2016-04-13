@@ -23,7 +23,7 @@ namespace Charply.Windows
         public Options()
         {
             InitializeComponent();
-            if (BLGame.getGrid())
+            if (Settings.Grid)
             {
                 btnGrid.Content = "Grid on";
             }
@@ -31,15 +31,15 @@ namespace Charply.Windows
             {
                 btnGrid.Content = "Grid off";
             }
-            txtGameSpeed.Text = string.Format("{0}", BLGame.getGameSpeed());
-            slidGameSizeSquare.Value = BLGame.getSquareSize();
+            txtGameSpeed.Text = string.Format("{0}", Settings.GameSpeed);
+            slidGameSizeSquare.Value = Settings.SquareSize;
         }
 
         private void slidGameSizeSquare_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            BLGame.setSquareSize(slidGameSizeSquare.Value);
-            testSquare.Width = 78.0 * BLGame.getSquareSize();
-            testSquare.Height = 65.0 * BLGame.getSquareSize();
+            Settings.SquareSize = slidGameSizeSquare.Value;
+            testSquare.Width = 78.0 * Settings.SquareSize;
+            testSquare.Height = 65.0 * Settings.SquareSize;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -51,21 +51,21 @@ namespace Charply.Windows
 
         private void btnGrid_Click(object sender, RoutedEventArgs e)
         {
-            if (BLGame.getGrid())
+            if (Settings.Grid)
             {
-                BLGame.setGrid(false);
+                Settings.Grid = false;
                 btnGrid.Content = "Grid off";
             }
             else
             {
-                BLGame.setGrid(true);
+                Settings.Grid = true;
                 btnGrid.Content = "Grid on";
             }
         }
 
         private void txtGameSpeed_TextChanged(object sender, TextChangedEventArgs e)
         {
-            BLGame.setGameSpeed(Convert.ToInt32(txtGameSpeed.Text));
+            Settings.GameSpeed = Convert.ToInt32(txtGameSpeed.Text);
         }
     }
 }

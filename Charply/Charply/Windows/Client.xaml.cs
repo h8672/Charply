@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,14 +25,13 @@ namespace Charply.Windows
         {
             InitializeComponent();
             InitThis();
-            BLGame.init();
         }
 
         private void InitThis()
         {
-            txtVersion.Text = BLGame.Version();
+            txtVersion.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
             //txtBoardText.Background = Brushes.AliceBlue;
-            txtBoardTitle.Text = "Alpha " + BLGame.Version();
+            txtBoardTitle.Text = "Alpha " + txtVersion.Text;
             txtBoardText.Text = "Game is currently in alpha version. New things are added continuously.\n"
                 + " - Client window half way done, no version downloads or checks yet\n"
                 + " - Mainscreen window done\n"

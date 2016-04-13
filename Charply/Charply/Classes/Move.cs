@@ -12,7 +12,7 @@ namespace Charply.Classes
         public Position b;
         public int time;
 
-        Move(Position a, Position b, int time)
+        public Move(Position a, Position b, int time)
         {
             this.a = a;
             this.b = b;

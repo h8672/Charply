@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,14 +21,108 @@ namespace Charply.Windows
     /// </summary>
     public partial class Game : Window
     {
+        List<Team> teams;
+        List<Player> players;
+        List<Building> buildings;
+        List<Soldier> soldiers;
+        Map map;
+        int turn;
+
         List<Grid> selected;
+        //View position
+        Position view;
+
+        //Window key listener
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.IsRepeat)
+            {
+                if (e.Key == Key.Up)
+                {
+                    view.Y--;
+                }
+                if (e.Key == Key.Down)
+                {
+                    view.Y++;
+                }
+                if (e.Key == Key.Left)
+                {
+                    view.X--;
+                }
+                if (e.Key == Key.Right)
+                {
+                    view.X++;
+                }
+                updateWindow();
+            }
+        }
+
         public Game()
         {
             InitializeComponent();
             onLoad();
         }
 
-        public void onLoad()
+        private void initLists()
+        {
+            teams = new List<Team>();
+            players = new List<Player>();
+            buildings = new List<Building>();
+            soldiers = new List<Soldier>();
+            map = new Map(Settings.MapSize);
+            turn = 0;
+            //View position
+            view = new Position(0, 0);
+            //Collects selections
+            selected = new List<Grid>();
+        }
+        private void addItemsToLists()
+        {
+            teams.Add(new Team());
+            players.Add(new Player());
+
+            LinkedList<Skill> skills = new LinkedList<Skill>();
+            /* Buildings */
+            //Capital
+            skills.AddLast(new Skill("Surrender", 0, 0, "Want to surrender?"));
+            buildings.Add(new Building("Capital", 100, skills, 20));
+            skills.Clear();
+            //Barracks
+            skills.AddLast(new Skill("Create Engineer", 1, 0, "Create an engineer"));
+            skills.AddLast(new Skill("Create Soldier", 1, 0, "Create a soldier"));
+            skills.AddLast(new Skill("Create Tank", 1, 0, "Create a tank"));
+            buildings.Add(new Building("Barracks", 100, skills, 50));
+            skills.Clear();
+
+            /* People */
+            //Engineer
+            skills.AddLast(new Skill("Build Capital", 1, 0, "Capital, the structure you want to protect"));
+            skills.AddLast(new Skill("Build Barracks", 1, 0, "Barracks creates soldiers"));
+            skills.AddLast(new Skill("Repair", 5, 0, "Repair buildings and vehicles"));
+            soldiers.Add(new Soldier("Engineer", 25, skills, 2));
+            skills.Clear();
+            //Medic
+            skills.AddLast(new Skill("Heal", 5, 1, "Heals people"));
+            soldiers.Add(new Soldier("Medic", 25, skills, 2));
+            skills.Clear();
+            //Infantry
+            skills.AddLast(new Skill("Gun shot", 10, 1, "Attack with gun"));
+            soldiers.Add(new Soldier("Infantry", 50, skills, 3));
+            skills.Clear();
+
+            /* Vehicles */
+            //Jeep
+            skills.AddLast(new Skill("Machinegun shots", 20, 2, "Attack with machine gun"));
+            soldiers.Add(new Soldier("Jeep", 100, skills, 1));
+            skills.Clear();
+            //Tank
+            skills.AddLast(new Skill("Barrel shot", 30, 3, "Attack, shoots 50% through buildings armor"));
+            soldiers.Add(new Soldier("Tank", 150, skills, 1));
+            skills.Clear();
+
+            //map.createMap();
+        }
+        private void updateWindow()
         {
             /* Ruutujen koot
             //7:5.1 ruutua 1.3
@@ -82,7 +177,7 @@ namespace Charply.Windows
                     square.MouseDown += new MouseButtonEventHandler(onMapObjectSelect);
 
                     //If grid's are enabled in settings
-                    if (BLGame.getGrid())
+                    if (Settings.Grid)
                     {
                         Border grid = new Border();
                         grid.BorderBrush = Brushes.Black;
@@ -110,9 +205,16 @@ namespace Charply.Windows
                     wrapMap.Children.Add(square);
                 }
             }
-            selected = new List<Grid>();
         }
-        
+
+        public void onLoad()
+        {
+            initLists();
+            addItemsToLists();
+            updateWindow();
+        }
+
+        //Click wrapmap object
         void onMapObjectSelect(object sender, MouseEventArgs e)
         {
             Grid grid = (Grid)sender;
@@ -121,10 +223,14 @@ namespace Charply.Windows
             if (temp == -1 && selected.Count > 1)
             {//If selected more
                 //Recolor all selects and clear list
+                string[] numbers;
                 selected.ForEach(delegate (Grid tgrid)
                 {
                     tgrid.Background = Brushes.Blue;
+
+                    numbers = Regex.Split(tgrid.Name, @"\D+");
                 });
+
                 selected.Clear();
                 //Color new select and add to list
                 grid.Background = Brushes.Black;
@@ -141,6 +247,12 @@ namespace Charply.Windows
                 selected.Remove(grid);
             }
             MessageBox.Show("You clicked " + grid.Name);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            txtTurns.Text = string.Format("{0}", ++turn);
+
         }
     }
 }

@@ -52,10 +52,10 @@ namespace Charply.Windows
                     difficulty = "easy";
                     break;
             }
-            BLGame.setDifficulty(difficulty);
-            BLGame.setMapSize(Convert.ToInt32(txtMapWidth.Text), Convert.ToInt32(txtMapHeight.Text));
-            BLGame.setMineralDensity((double)slidMinerals.Value / 100);
-            BLGame.setSoldiersPerPlayer(Convert.ToInt32(txtSoldiers.Text));
+            Settings.Difficulty = difficulty;
+            Settings.MapSize = new Position(Convert.ToInt32(txtMapWidth.Text), Convert.ToInt32(txtMapHeight.Text));
+            Settings.MapMinerals = ((double)slidMinerals.Value / 100);
+            Settings.SoldierCount = Convert.ToInt32(txtSoldiers.Text);
             App.Current.MainWindow = new LoadingScreen();
             //App.Current.MainWindow.Show();
             Close();
