@@ -27,15 +27,16 @@ namespace Charply.Windows
         List<Soldier> soldiers;
         Map map;
         int turn;
+        double temp;
 
-        List<Grid> selected;
+        List<Position> selected;
         //View position
         Position view;
 
         //Window key listener
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.IsRepeat)
+            if (e.IsDown)
             {
                 if (e.Key == Key.Up)
                 {
@@ -53,7 +54,9 @@ namespace Charply.Windows
                 {
                     view.X++;
                 }
-                updateWindow();
+                if (!(0 < view.X)) view.X = 0;
+                if (!(0 < view.Y)) view.Y = 0;
+                        updateWindow();
             }
         }
 
@@ -71,10 +74,11 @@ namespace Charply.Windows
             soldiers = new List<Soldier>();
             map = new Map(Settings.MapSize);
             turn = 0;
+            temp = 0;
             //View position
             view = new Position(0, 0);
             //Collects selections
-            selected = new List<Grid>();
+            selected = new List<Position>();
         }
         private void addItemsToLists()
         {
@@ -120,10 +124,14 @@ namespace Charply.Windows
             soldiers.Add(new Soldier("Tank", 150, skills, 1));
             skills.Clear();
 
-            //map.createMap();
+            map.init();
+            map.createMap();
         }
         private void updateWindow()
         {
+            txtViewX.Text = string.Format("{0}", view.X);
+            txtViewY.Text = string.Format("{0}", view.Y);
+            wrapMap.Children.Clear();
             /* Ruutujen koot
             //7:5.1 ruutua 1.3
             //8:5.6 ruutua 1.2
@@ -134,7 +142,7 @@ namespace Charply.Windows
             //12:8.5 ruutua 0.8
             //13:9 ruutua 0.75
             //14:9.5 ruutua 0.7*/
-            double kerroin = 1.3;
+            double kerroin = Settings.SquareSize;
             int maarax = 0;
             int maaray = 0;
             if (kerroin == 1.3)
@@ -152,28 +160,54 @@ namespace Charply.Windows
                 maarax = 11;
                 maaray = 8;
             }
-            else if (kerroin == 0.75)
-            {
+            else {
+                kerroin = 0.75;
                 maarax = 13;
                 maaray = 9;
             }
-            else {
-                maarax = 11;
-                maaray = 8;
+
+            //Jos kuva ei saata pysyä kartalla...
+            if (view.X + maarax > Settings.MapSize.X)
+            {
+                view.X = Settings.MapSize.X - maarax;
+                maarax = Settings.MapSize.X;
             }
+            else if (view.Y + maaray > Settings.MapSize.Y)
+            {
+                view.Y = Settings.MapSize.Y - maaray;
+                maaray = Settings.MapSize.Y;
+            }
+            else
+            {
+                maarax += view.X;
+                maaray += view.Y;
+            }
+
             //kerroin = BLGame.getMineralDensity();
             wrapMap.ItemHeight = 65 * kerroin; // 5/6 leveydestä
             wrapMap.ItemWidth = 78 * kerroin;
-            for (int y = 0; y < maaray; y++)
+            for (int y = view.Y; y < maaray; y++)
             {
-                for (int x = 0; x < maarax; x++)
+                for (int x = view.X; x < maarax; x++)
                 {
+                    MapObject mapobj = map.getMapObject(new Position(x, y));
                     //Grid represents MapObject
                     Grid square = new Grid();
                     //border.BorderBrush = Brushes.Black;
-                    square.Background = Brushes.Blue;
+                    square.Background = mapobj.Background;
                     //border.BorderThickness = new Thickness(2);
-                    square.Name = string.Format("Block{0}x{1}", x, y);
+                    square.Name = string.Format("{0}{1}x{2}", mapobj.Name, x, y);
+                    square.ToolTip = mapobj.Name;
+                    TextBlock posx = new TextBlock();
+                    TextBlock posy = new TextBlock();
+                    posx.Name = "PosX";
+                    posx.Text = x.ToString();
+                    posx.Visibility = Visibility.Hidden;
+                    square.Children.Add(posx);
+                    posy.Name = "PosY";
+                    posy.Text = y.ToString();
+                    posy.Visibility = Visibility.Hidden;
+                    square.Children.Add(posy);
                     square.MouseDown += new MouseButtonEventHandler(onMapObjectSelect);
 
                     //If grid's are enabled in settings
@@ -218,41 +252,107 @@ namespace Charply.Windows
         void onMapObjectSelect(object sender, MouseEventArgs e)
         {
             Grid grid = (Grid)sender;
-            int temp = selected.IndexOf(grid);
+            TextBlock posx = FindChild<TextBlock>(this, "PosX");
+            TextBlock posy = FindChild<TextBlock>(this, "PosY");
+            Position pos = new Position(Convert.ToInt32(posx.Text), Convert.ToInt32(posy.Text));
+            int temp = selected.IndexOf(pos);
             
             if (temp == -1 && selected.Count > 1)
-            {//If selected more
-                //Recolor all selects and clear list
-                string[] numbers;
-                selected.ForEach(delegate (Grid tgrid)
-                {
-                    tgrid.Background = Brushes.Blue;
-
-                    numbers = Regex.Split(tgrid.Name, @"\D+");
-                });
-
+            {
+                //If selected more
+                //Temporary color to mapobject
+                MapObject mapobj = map.getMapObject(selected.ElementAt(1));
+                mapobj.Background = Brushes.Black;
+                //Reload map view, resets visual selections
+                updateWindow();
+                //Recolor temporary mapobject
+                map.fixColor(selected.ElementAt(1));
+                //Clear selections
                 selected.Clear();
-                //Color new select and add to list
-                grid.Background = Brushes.Black;
-                selected.Add(grid);
+                //Add new position to selected list
+                selected.Add(pos);
             }
             else if (temp == -1)
-            {//If doesn't exist
+            {
+                //If doesn't exist in selection
+                //Add color
                 grid.Background = Brushes.Black;
-                selected.Add(grid);
+                //Select it
+                selected.Add(pos);
             }
             else
             {
                 grid.Background = Brushes.Blue;
-                selected.Remove(grid);
+                selected.Remove(pos);
             }
-            MessageBox.Show("You clicked " + grid.Name);
+            //MessageBox.Show("You clicked " + grid.Name);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             txtTurns.Text = string.Format("{0}", ++turn);
+            updateWindow();
+        }
 
+        //Works well at finding child by name from application, link below where I copied this(FindChild function) part of code.
+        //https://social.msdn.microsoft.com/Forums/vstudio/en-US/377ea356-3c20-4429-9536-da4ce930e48f/how-to-access-a-grids-child-element-by-name-programatically?forum=wpf
+        private T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
+        {
+            // Confirm parent and childName are valid. 
+            if (parent == null) return null;
+
+            T foundChild = null;
+
+            int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childrenCount; i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                // If the child is not of the request child type child
+                T childType = child as T;
+                if (childType == null)
+                {
+                    // recursively drill down the tree
+                    foundChild = FindChild<T>(child, childName);
+
+                    // If the child is found, break so we do not overwrite the found child. 
+                    if (foundChild != null) break;
+                }
+                else if (!string.IsNullOrEmpty(childName))
+                {
+                    var frameworkElement = child as FrameworkElement;
+                    // If the child's name is set for search
+                    if (frameworkElement != null && frameworkElement.Name == childName)
+                    {
+                        // if the child's name is of the request name
+                        foundChild = (T)child;
+                        break;
+                    }
+                }
+                else
+                {
+                    // child element found.
+                    foundChild = (T)child;
+                    break;
+                }
+            }
+
+            return foundChild;
+        }
+
+        private void MapZoom_Click(object sender, RoutedEventArgs e)
+        {
+            //Its toggle zoom!
+            if(temp == 0)
+            {
+                double temp = Settings.SquareSize;
+                Settings.SquareSize = 0;
+                updateWindow();
+            }
+            else
+            {
+                Settings.SquareSize = temp;
+                updateWindow();
+            }
         }
     }
 }

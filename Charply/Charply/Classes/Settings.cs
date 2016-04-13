@@ -22,8 +22,9 @@ namespace Charply.Classes
 
         #region Properties
         //Options
-        static public int GameSpeed {
-            get{ return gamespeed; }
+        static public int GameSpeed
+        {
+            get { return gamespeed; }
             set { gamespeed = value; }
         }
         static public double SquareSize
@@ -64,7 +65,18 @@ namespace Charply.Classes
         #endregion
 
         #region Functions
-
+        static public void init()
+        {
+            //Options
+            gamespeed = 1;
+            mapsquaresize = 1.3;
+            //New game
+            Position mapsize = new Position(0, 0);
+            mapresources = 0.1;
+            difficulty = "easy";
+            soldiercount = 255;
+            grid = true;
+        }
         #endregion
     }
 }

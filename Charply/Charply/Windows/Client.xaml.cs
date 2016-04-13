@@ -25,6 +25,7 @@ namespace Charply.Windows
         {
             InitializeComponent();
             InitThis();
+            Settings.init();
         }
 
         private void InitThis()

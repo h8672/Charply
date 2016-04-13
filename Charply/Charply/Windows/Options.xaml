@@ -15,9 +15,9 @@
                 <Grid TextBlock.FontSize="18">
                     <StackPanel>
                         <!--Row-->
-                        <Grid>
+                        <Grid Margin="5 10">
                             <TextBlock Text="Game speed (turns)"/>
-                            <TextBox Name="txtGameSpeed" HorizontalAlignment="Right" Width="80" Text="1" TextAlignment="Center" TextChanged="txtGameSpeed_TextChanged"/>
+                            <TextBox Name="txtGameSpeed" HorizontalAlignment="Right" Width="80" TextAlignment="Center" TextChanged="txtGameSpeed_TextChanged"/>
                         </Grid>
                         <!--Row-->
 
@@ -31,8 +31,8 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock>small</TextBlock>
                                     <Slider x:Name="slidGameSizeSquare" IsSnapToTickEnabled="True" TickPlacement="TopLeft"
-                                            Value="0.75" Minimum="0.75" Maximum="1.3" Ticks="0.75, 0.85, 1.1, 1.3"
-                                            Width="120" Margin="10 0" ValueChanged="slidGameSizeSquare_ValueChanged"/>
+                                            Minimum="0.75" Maximum="1.3" Ticks="0.75, 0.85, 1.1, 1.3" Value="{Binding Path=SquareSize}"
+                                            Width="120" Margin="10 0" Thumb.DragCompleted="slidGameSizeSquare_DragCompleted" KeyDown="slidGameSizeSquare_KeyDown"/>
                                     <TextBlock>large</TextBlock>
                                 </StackPanel>
                             </StackPanel>

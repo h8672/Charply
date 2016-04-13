@@ -35,18 +35,16 @@ namespace Charply.Windows
             slidGameSizeSquare.Value = Settings.SquareSize;
         }
 
-        private void slidGameSizeSquare_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void txtGameSpeed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Settings.GameSpeed = Convert.ToInt32(txtGameSpeed.Text);
+        }
+
+        private void slidChange()
         {
             Settings.SquareSize = slidGameSizeSquare.Value;
             testSquare.Width = 78.0 * Settings.SquareSize;
             testSquare.Height = 65.0 * Settings.SquareSize;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.MainWindow = new Mainscreen();
-            App.Current.MainWindow.Show();
-            Close();
         }
 
         private void btnGrid_Click(object sender, RoutedEventArgs e)
@@ -63,9 +61,22 @@ namespace Charply.Windows
             }
         }
 
-        private void txtGameSpeed_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Settings.GameSpeed = Convert.ToInt32(txtGameSpeed.Text);
+            App.Current.MainWindow = new Mainscreen();
+            App.Current.MainWindow.Show();
+            Close();
+        }
+
+        private void slidGameSizeSquare_DragCompleted(object sender, RoutedEventArgs e)
+        {
+            slidChange();
+        }
+
+        private void slidGameSizeSquare_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.IsDown && (e.Key == Key.Left || e.Key == Key.Right))
+                slidChange();
         }
     }
 }

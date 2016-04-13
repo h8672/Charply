@@ -13,6 +13,7 @@ namespace Charply.Classes
         #region Attributes
         private Position size;
         private List<MapObject> mapobjects;
+        private List<MapObject> mapobjectbackup;
         private LinkedList<MapObject> maplink;
         #endregion
 
@@ -56,12 +57,23 @@ namespace Charply.Classes
             mapobjects.Add(new MapObject("Water", 10, Brushes.LightBlue));
             mapobjects.Add(new MapObject("Forest", 2, Brushes.Green));
             mapobjects.Add(new MapObject("Dirt", 1.2, Brushes.Brown));
+            mapobjectbackup = new List<MapObject>(mapobjects);
+        }
+
+        public void fixColor(Position pos)
+        {
+            MapObject fixobj = getMapObject(pos);
+            mapobjectbackup.ForEach(delegate (MapObject mapobj)
+            {
+                if (fixobj.Name == mapobj.Name) fixobj.Background = mapobj.Background;
+            });
         }
 
         public void createMap()
         {
             try
             {
+                maplink.Clear();
                 Random rnd = new Random();
                 //Jos kartan teko onnistuu
                 for (int y = 0; y < MapSize.Y; y++) //Row
@@ -70,7 +82,7 @@ namespace Charply.Classes
                     {
                         if (mapobjects.Count > 0)
                         {
-                            maplink.AddLast(mapobjects.ElementAt(rnd.Next(mapobjects.Count)));
+                            maplink.AddLast(new MapObject(mapobjects.ElementAt(rnd.Next(mapobjects.Count - 1))));
                         }
                         else {
                             MessageBox.Show("There's no MapObjects");
@@ -89,7 +101,10 @@ namespace Charply.Classes
 
         public MapObject getMapObject(Position pos)
         {
-            int listpos = size.X * (pos.Y - 1) + pos.Y;
+            int listpos;
+            if (pos.Y > 0)
+                listpos = size.X * (pos.Y - 1) + pos.X;
+            else listpos = pos.X;
             return maplink.ElementAt(listpos);
 
         }
