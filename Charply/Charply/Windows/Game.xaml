@@ -16,6 +16,7 @@
             <TextBlock Name="txtViewX" Text="0" Padding="5"/>
             <TextBlock Name="txtViewY" Text="0" Padding="0 5 5 5"/>
         </StackPanel>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Name="txtPlayer" Text="0" Padding="5" Background="Gray" Foreground="White" Height="30" TextAlignment="Center"/>
         <Grid Height="120" VerticalAlignment="Bottom" Background="Gray">
             <StackPanel Width="650" HorizontalAlignment="Left">
                 <Grid Height="70">

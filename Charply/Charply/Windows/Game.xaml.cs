@@ -54,6 +54,10 @@ namespace Charply.Windows
                 {
                     view.X++;
                 }
+                if(e.Key == Key.Escape)
+                {
+                    new GameMenu().ShowDialog();
+                }
                 if (!(0 < view.X)) view.X = 0;
                 if (!(0 < view.Y)) view.Y = 0;
                         updateWindow();
@@ -64,6 +68,15 @@ namespace Charply.Windows
         {
             InitializeComponent();
             onLoad();
+        }
+
+
+        public void onLoad()
+        {
+            initLists();
+            getGameSettings();
+            addItemsToLists();
+            updateWindow();
         }
 
         private void initLists()
@@ -80,10 +93,51 @@ namespace Charply.Windows
             //Collects selections
             selected = new List<Position>();
         }
+        private void getGameSettings()
+        {
+             new TeamPlayer().ShowDialog();
+            txtPlayer.Text = Settings.PlayerName;
+        }
         private void addItemsToLists()
         {
-            teams.Add(new Team());
-            players.Add(new Player());
+            for (int i = 0; i < Settings.Teams; i++)
+            {
+                teams.Add(new Team());
+            }
+            players.Add(new Player()); //Player, always 1st in list
+            for (int i = 0; i < Settings.Cpu; i++)
+            {
+                players.Add(new Player());
+            }
+            //Set teams to players
+            int team = 0;
+            if (Settings.Solo)
+            {
+                players.ElementAt(0).Team = teams.ElementAt(team++);
+                //Do cpu's until we have enough to meet requirements
+                while (players.Count < Settings.Cpu)
+                {
+                    for (int i = 1; i < Math.Round((double)Settings.Cpu / (Settings.Teams - 1) + 1); i++)
+                    {
+                        players.ElementAt(i).Team = teams.ElementAt(team);
+                    }
+                    team++;
+                }
+            }
+            else
+            {
+                players.ElementAt(0).Team = teams.ElementAt(team);
+                //Do cpu's until we have enough to meet requirements
+                while (players.Count < Settings.Cpu)
+                {
+                    for (int i = 1; i < Math.Round((double)Settings.Cpu / Settings.Teams + 1); i++)
+                    {
+                        players.ElementAt(i).Team = teams.ElementAt(team);
+                    }
+                    team++;
+                }
+
+            }
 
             LinkedList<Skill> skills = new LinkedList<Skill>();
             /* Buildings */
@@ -126,6 +180,60 @@ namespace Charply.Windows
 
             map.init();
             map.createMap();
+
+            //Give players starting things
+            Random rnd = new Random();
+            List<Position> randpos = new List<Position>();
+            for(int i = 0; i < players.Count; i++)
+                randpos.Add(new Position(rnd.Next(200), rnd.Next(200)));
+            //Maybe a check of position?
+            //Get player objects from lists and add them
+            int capitalpos = -1;
+            for(int i = 0; i < buildings.Count; i++)
+            {
+                if (buildings.ElementAt(i).Name == "Capital") capitalpos = i;
+            }
+            int infantrypos = -1;
+            for (int i = 0; i < soldiers.Count; i++)
+            {
+                if (soldiers.ElementAt(i).Name == "Infantry") infantrypos = i;
+            }
+            int tankpos = -1;
+            for (int i = 0; i < soldiers.Count; i++)
+            {
+                if (soldiers.ElementAt(i).Name == "Tank") tankpos = i;
+            }
+            int medicpos = -1;
+            for (int i = 0; i < soldiers.Count; i++)
+            {
+                if (soldiers.ElementAt(i).Name == "Medic") medicpos = i;
+            }
+            int engineerpos = -1;
+            for (int i = 0; i < soldiers.Count; i++)
+            {
+                if (soldiers.ElementAt(i).Name == "Engineer") engineerpos = i;
+            }
+            Building capital = buildings.ElementAt(capitalpos);
+            Soldier infantry = soldiers.ElementAt(infantrypos);
+            Soldier medic = soldiers.ElementAt(medicpos);
+            Soldier engineer = soldiers.ElementAt(engineerpos);
+            /* Something went wrong here...
+            for (int i = 0; i < players.Count; i++)
+            {
+                //MessageBox.Show("Hello players size " + players.Count);
+                Position temp = randpos.ElementAt(i);
+                Building build = new Building(capital, new Position(temp.X, temp.Y));
+                players.ElementAt(i).Buildings.Add(build);
+                temp.X++;
+                players.ElementAt(i).Soldiers.Add(new Soldier(infantry, new Position(temp.X, temp.Y)));
+                temp.Y++;
+                players.ElementAt(i).Soldiers.Add(new Soldier(infantry, new Position(temp.X, temp.Y)));
+                temp.X--;
+                players.ElementAt(i).Soldiers.Add(new Soldier(medic, new Position(temp.X, temp.Y)));
+                temp.Y++;
+                players.ElementAt(i).Soldiers.Add(new Soldier(engineer, new Position(temp.X, temp.Y)));
+            }
+            */
         }
         private void updateWindow()
         {
@@ -239,13 +347,6 @@ namespace Charply.Windows
                     wrapMap.Children.Add(square);
                 }
             }
-        }
-
-        public void onLoad()
-        {
-            initLists();
-            addItemsToLists();
-            updateWindow();
         }
 
         //Click wrapmap object

@@ -18,6 +18,11 @@ namespace Charply.Classes
         static private string difficulty;
         static private int soldiercount;
         static private bool grid;
+        //Map type
+        static private string playername;
+        static private int cpu;
+        static private int teams;
+        static private bool solo;
         #endregion
 
         #region Properties
@@ -57,6 +62,27 @@ namespace Charply.Classes
         {
             get { return mapresources; }
             set { mapresources = value; }
+        }
+        //Map type
+        static public string PlayerName
+        {
+            get { return playername; }
+            set { playername = value; }
+        }
+        static public int Cpu
+        {
+            get { return cpu; }
+            set { cpu = value; }
+        }
+        static public int Teams
+        {
+            get { return teams; }
+            set { teams = value; }
+        }
+        static public bool Solo
+        {
+            get { return solo; }
+            set { solo = value; }
         }
         #endregion
 

@@ -57,7 +57,7 @@ namespace Charply.Classes
             mapobjects.Add(new MapObject("Grass", 1, Brushes.LightGreen));
             mapobjects.Add(new MapObject("Water", 10, Brushes.LightBlue));
             mapobjects.Add(new MapObject("Forest", 2, Brushes.Green));
-            mapobjects.Add(new MapObject("Dirt", 1.2, Brushes.Brown));
+            mapobjects.Add(new MapObject("Dirt", 1.2, Brushes.SaddleBrown));
             for (int i = 0; i < mapobjects.Count; i++)
                 mapobjectbackup.Add(new MapObject(mapobjects.ElementAt(i)));
         }
@@ -84,7 +84,7 @@ namespace Charply.Classes
                     {
                         if (mapobjects.Count > 0)
                         {
-                            maplink.AddLast(mapobjects.ElementAt(rnd.Next(mapobjects.Count - 1)));
+                            maplink.AddLast(mapobjects.ElementAt(rnd.Next(mapobjects.Count)));
                         }
                         else {
                             MessageBox.Show("There's no MapObjects");
