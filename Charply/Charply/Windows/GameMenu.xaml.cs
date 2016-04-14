@@ -32,22 +32,29 @@ namespace Charply.Windows
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //TODO
+            GameSave save = new GameSave();
+            save.ShowDialog();
         }
 
         private void bntLoad_Click(object sender, RoutedEventArgs e)
         {
             //Open Continue screen, but dont close current.
             Continue load = new Continue();
+            load.ShowDialog();
         }
 
         private void btnToMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            Window window = App.Current.MainWindow;
+            App.Current.MainWindow = new Mainscreen();
+            App.Current.MainWindow.Show();
+            window.Close();
+            Close();
         }
 
         private void btnQuit_Click(object sender, RoutedEventArgs e)
         {
-
+            App.Current.Shutdown();
         }
     }
 }

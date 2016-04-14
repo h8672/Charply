@@ -38,8 +38,6 @@ namespace Charply.Windows
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainWindow = new Mainscreen();
-            App.Current.MainWindow.Show();
             Close();
         }
     }

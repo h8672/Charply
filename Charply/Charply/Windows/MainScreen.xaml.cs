@@ -34,9 +34,8 @@ namespace Charply.Windows
 
         private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainWindow = new Continue();
-            App.Current.MainWindow.Show();
-            Close();
+            Continue load = new Continue();
+            load.ShowDialog();
         }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
